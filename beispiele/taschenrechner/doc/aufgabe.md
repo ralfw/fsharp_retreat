@@ -4,7 +4,7 @@ Es soll ein Taschenrechner entwickelt werden. Der kann die Grundrechenarten ohne
 
 Das UI sieht so aus:
 
-![](../../../beispiele/taschenrechner/doc/gui skizze.jpg)
+![](https://raw.github.com/ralfw/fsharp_retreat/master/beispiele/taschenrechner/doc/gui%20skizze.png)
 
 Die Zahlen werden im Textfeld eingegeben. Wenn man dann einen Operator betätigt, wird weitergerechnet. Hier eine Beispieleingabesequenz:
 
