@@ -4,7 +4,7 @@ Es soll ein Taschenrechner entwickelt werden. Der kann die Grundrechenarten ohne
 
 Das UI sieht so aus:
 
-![](guiskizze.png)
+![](gui skizze.jpg)
 
 Die Zahlen werden im Textfeld eingegeben. Wenn man dann einen Operator betätigt, wird weitergerechnet. Hier eine Beispieleingabesequenz:
 
