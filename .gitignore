@@ -1,0 +1,8 @@
+.DS_Store
+bin/
+obj/
+*.user
+*.cache
+*.suo
+*.userprefs
+*ReSharper*
