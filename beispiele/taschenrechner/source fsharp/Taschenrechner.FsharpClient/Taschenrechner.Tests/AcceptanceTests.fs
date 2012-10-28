@@ -1,0 +1,42 @@
+﻿namespace Taschenrechner.Tests
+
+open System
+open NUnit.Framework
+
+open Taschenrechner.FsharpClient
+
+// Hinweis: ich habe ein wenig "gemogelt" - eigentlich müsste ich das über die IGUI
+// Schnittstelle abhandeln - damit müsste ich mich aber um einen Mock kümmern oder die
+// Logik im Program nachbauen
+// da es ja nur darum gehen sollte zu sehen, wie Test in F# aussehen können (ja man kann Prosa schreiben :D)
+// dürfte das reichen
+
+// PS: falls ihr das benutzeRechner nicht finden könnt (die VS Navigation sollte gehen)
+// das ist sicher geschmacksache, ob man das so machen sollte: es ist in den Helpers.fs definiert
+// und das Modul dort steht auf Autoopen, so dass die Funktionen im Namespace automatisch
+// zur Verfügung stehen - mir gefällt das, weil es mir Schreibarbeit erledigt, kann aber natürich
+// zu Verwirrung führen (wo kommt das den her) ... in dem Fall sollte es ok sein
+
+[<TestFixture>]
+type ``aceptance Tests nach Anforderung``() = 
+
+    [<Test>]
+    member test.``Eingabe von (2,'+') liefert Zwischenergebnis 2``() = 
+        let eingaben = [(2.0, '+')]
+        let erwartet = [2.0]
+        let ergebnise = benutzeRechner eingaben
+        CollectionAssert.AreEqual(erwartet, ergebnise)
+
+    [<Test>]
+    member test.``Eingabe von [(2,+); (3,*); (4,=)] liefert Zwischenergebnise (2, 5, 20)``() = 
+        let eingaben = [(2.0,'+'); (3.0,'*'); (4.0,'=')]
+        let erwartet = [2.0; 5.0; 20.0]
+        let ergebnise = benutzeRechner eingaben
+        CollectionAssert.AreEqual(erwartet, ergebnise)
+
+    [<Test>]
+    member test.``Eingabe von [(2,+); (3,*); (4,=), (7,*), (5,=), (35,+), (5,=)] liefert Zwischenergebnise (2,5,20,7,35,35,40)``() = 
+        let eingaben = [(2.0,'+'); (3.0,'*'); (4.0,'='); (7.0,'*'); (5.0,'='); (35.0, '+'); (5.0, '=')]
+        let erwartet = [2.0; 5.0; 20.0; 7.0; 35.0; 35.0; 40.0]
+        let ergebnise = benutzeRechner eingaben
+        CollectionAssert.AreEqual(erwartet, ergebnise)
