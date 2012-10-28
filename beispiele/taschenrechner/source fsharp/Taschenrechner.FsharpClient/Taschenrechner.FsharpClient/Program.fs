@@ -47,6 +47,18 @@ let rechner (gui : IGUI) : IDisposable =
     { new IDisposable with member i.Dispose() = mb.Post None }
         
 
+// eher klassisches Modell:
+let imperativerRechner (gui : IGUI) =
+    // hier der "mutable" Zustand
+    // das ist eine Referenzzelle, die mit := gesetz und mit ! abgefragt wird
+    let zustand = ref Rechner.initial
+
+    let aufEingabeReagieren (z : double, op : string) = 
+        zustand := Rechner.verarbeiteEingabe !zustand (z, op.[0])
+        gui.Ergebnis_anzeigen (fst !zustand)
+
+    gui.add_Rechenschritt_ausführen (new Action<_>(aufEingabeReagieren))
+
 // Der Einstiegspunkt - wie ihr seht komplett analog zum C#-Fall
 [<EntryPoint>]
 [<STAThread>]
@@ -55,7 +67,7 @@ let main argv =
     Application.SetCompatibleTextRenderingDefault(false);
 
     let gui = new GUI();
-    use rechner = rechner gui
+    imperativerRechner gui
 
     Application.Run(gui);
     0
