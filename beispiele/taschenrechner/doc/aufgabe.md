@@ -58,3 +58,9 @@ Statt _Action<double,string>_ könnte auch _Action&lt;Rechenschritt>_ oder _Acti
 1. Wie wird Zustand implementiert, wie ihn einige der Operationen entweder für sich allein oder sogar gemeinsam mit anderen halten?
 1. Wie wird die C#-Form eingebunden?
 
+## Antworten bzg. F#
+1. Tuple in F# werden direkt unterstütz und ein Tuple<tA,tB,tC> kommt als tA*tB*tC raus, ein Beispiel für Tuple<Int, String, Double> bzw. int*string*double wäre (1, "Hallo", 2.0)
+1. Bin mir nicht 100% sicher was gemeint ist - ich hätte das jetzt als "Funktion" implementiert - wenn man das noch extra verpackt will, kann man seperate Module dafür anlegen
+1. Zustand ist ja eher unerwünscht, deshalb bekommt ihn die Berechen-Einheit als zustäzliche Eingabe und liefert einen solchen als Ausgabe, die Zustandsverwaltung wird dann so weit wie möglich hochgedrückt - in meinem Implementationsfall bis in die Runtime/MailboxProzessor. Das ist normalerweise auch der Punkt, wo man Monaden einführen kann (es gibt einen State-Monad)
+1. ganz genau wie die C#-Form auch - die Übersetzung ist ähnlich einfach wie C#->VB.net ... einfach mal in den Quelltext schauen (weiß nicht ob es in VS2012 bzw. F# 1.0 schon ging, aber man kann jetzt nicht nur Dlls und Consolenanwendungen, sondern auch Windowsanwendungen kompilieren, s.d. auch kein hässliches Consolenfenster zustäzlich erscheint - nur die Designertools gibts (noch?) nicht, aber auch da kann man abhilfe schaffen, z.B. mit den XAML-Typprovider von S. Forkmann) 
+
