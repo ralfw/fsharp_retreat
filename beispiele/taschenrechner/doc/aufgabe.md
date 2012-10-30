@@ -70,3 +70,31 @@ Statt _Action<double,string>_ könnte auch _Action&lt;Rechenschritt>_ oder _Acti
 ## Anforderungen - Iteration 2
 Der Taschenrechner soll nun erweitert werden um Zifferntasten. Dafür fällt allerdings die direkte Eingabe einer Zahl weg.
 
+![](https://raw.github.com/ralfw/fsharp_retreat/master/beispiele/taschenrechner/doc/gui%20skizze v2.png)
+
+## Flow
+#### Root Flow
+Zur bisherigen Interaktion der Operatoreingabe kommt die der Zifferneingabe hinzu:
+
+![](http://yuml.me/742e2a47)
+
+	[GUI Zifferneingabe]->(Zahl aktualisieren)->[GUI Ergebnis anzeigen]
+
+Dadurch verändert sich aber auch der bisherige Flow, denn nun kommt der aktuelle Operand nicht mehr aus dem UI. Es ist ja nicht mehr für seine Bestimmung zuständig.
+
+![](http://yuml.me/766d4dfd)
+
+	[GUI Rechenschritt ausfuehren]->(Zahl entnehmen)->(Berechnen)->[GUI Ergebnis anzeigen]
+
+Die Operationen _Zahl aktualisieren_ und _Zahl entnehmen_ teilen sich natürlich Zustand. Eine weitere Verfeinerung scheint jedoch nicht nötig.
+
+Nach der Entnahme ist die aktuelle Zahl auf 0 zurückgesetzt.
+
+## Interface
+
+	interface IGUI {
+		event Action<string> Rechenschritt_ausführen;
+		event Action<string> Zifferneingabe;
+		void Ergebnis_anzeigen(double zwischenergebnis);
+	}
+
