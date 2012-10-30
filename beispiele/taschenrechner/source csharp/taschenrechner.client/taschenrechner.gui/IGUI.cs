@@ -16,7 +16,8 @@ namespace taschenrechner.gui
 {
     public interface IGUI
     {
-        event Action<Tuple<double, string>> Rechenschritt_ausführen;
+        event Action<string> Rechenschritt_ausführen;
+        event Action<string> Zifferneingabe;
         void Ergebnis_anzeigen(double ergebnis);
     }
 }

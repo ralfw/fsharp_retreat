@@ -46,8 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="flows\Root.cs" />
     <Compile Include="operationen\Akkumulator.cs" />
     <Compile Include="flows\Berechnen.cs" />
+    <Compile Include="operationen\Zahlenwerk.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="operationen\Rechenwerk.cs" />

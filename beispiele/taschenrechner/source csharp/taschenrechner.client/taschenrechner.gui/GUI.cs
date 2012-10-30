@@ -11,23 +11,25 @@ namespace taschenrechner.gui
         }
 
 
+        private void btnDigit_Click(object sender, EventArgs e)
+        {
+            var digit = ((Button)sender).Text;
+            Zifferneingabe(digit);
+        }
+
         private void btnOp_Click(object sender, EventArgs e)
         {
-            var operand = double.Parse(textBox1.Text);
             var op = ((Button) sender).Text;
-            Rechenschritt_ausführen(new Tuple<double, string>(operand, op));
+            Rechenschritt_ausführen(op);
         }
 
 
-        public event Action<Tuple<double, string>> Rechenschritt_ausführen;
+        public event Action<string> Rechenschritt_ausführen;
+        public event Action<string> Zifferneingabe;
         
         public void Ergebnis_anzeigen(double ergebnis)
         {
             textBox1.Text = ergebnis.ToString();
-            textBox1.SelectionStart = 0;
-            textBox1.SelectionLength = 99;
-            textBox1.Focus();
         }
-
     }
 }

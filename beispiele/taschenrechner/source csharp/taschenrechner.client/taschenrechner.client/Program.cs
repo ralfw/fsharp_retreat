@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using taschenrechner.client.flows;
+using taschenrechner.client.operationen;
 using taschenrechner.gui;
 
 namespace taschenrechner.client
@@ -19,10 +20,8 @@ namespace taschenrechner.client
             Application.SetCompatibleTextRenderingDefault(false);
 
             var gui = new GUI();
-            var berechnen = new Berechnen();
 
-            gui.Rechenschritt_ausführen += berechnen.Process;
-            berechnen.Result += gui.Ergebnis_anzeigen;
+            var root = new Root(gui, new Zahlenwerk(), new Berechnen());
 
             Application.Run(gui);
         }
