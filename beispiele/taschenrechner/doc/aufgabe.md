@@ -90,6 +90,13 @@ Die Operationen _Zahl aktualisieren_ und _Zahl entnehmen_ teilen sich natürlich
 
 Nach der Entnahme ist die aktuelle Zahl auf 0 zurückgesetzt.
 
+__Zusammenfassung:__
+
+![](http://yuml.me/e3d35bf9)
+
+	[GUI Zifferneingabe]-Ziffer>(Zahlenwerk)-Zahl>[GUI Ergebnis anzeigen],
+	[GUI Rechenschritt ausfuehren]-Op>(Zahlenwerk)-Rechenschritt>(Berechnen)-Zahl>[GUI Ergebnis anzeigen]
+
 ## Interface
 
 	interface IGUI {
