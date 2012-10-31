@@ -46,6 +46,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EingabeBuffer.fs" />
     <Compile Include="Taschenrechner.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />

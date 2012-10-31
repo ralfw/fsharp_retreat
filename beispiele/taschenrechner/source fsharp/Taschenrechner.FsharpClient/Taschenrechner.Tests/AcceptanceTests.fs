@@ -21,22 +21,15 @@ open Taschenrechner.FsharpClient
 type ``aceptance Tests nach Anforderung``() = 
 
     [<Test>]
-    member test.``Eingabe von (2,'+') liefert Zwischenergebnis 2``() = 
-        let eingaben = [(2.0, '+')]
-        let erwartet = [2.0]
+    member test.``Eingabe von [2; +] liefert Ausgaben [2; 2]``() = 
+        let eingaben = [Ziffer '2'; Operator '+']
+        let erwartet = [2.0; 2.0]
         let ergebnise = benutzeRechner eingaben
         CollectionAssert.AreEqual(erwartet, ergebnise)
 
     [<Test>]
-    member test.``Eingabe von [(2,+); (3,*); (4,=)] liefert Zwischenergebnise (2, 5, 20)``() = 
-        let eingaben = [(2.0,'+'); (3.0,'*'); (4.0,'=')]
-        let erwartet = [2.0; 5.0; 20.0]
-        let ergebnise = benutzeRechner eingaben
-        CollectionAssert.AreEqual(erwartet, ergebnise)
-
-    [<Test>]
-    member test.``Eingabe von [(2,+); (3,*); (4,=), (7,*), (5,=), (35,+), (5,=)] liefert Zwischenergebnise (2,5,20,7,35,35,40)``() = 
-        let eingaben = [(2.0,'+'); (3.0,'*'); (4.0,'='); (7.0,'*'); (5.0,'='); (35.0, '+'); (5.0, '=')]
-        let erwartet = [2.0; 5.0; 20.0; 7.0; 35.0; 35.0; 40.0]
+    member test.``Eingabe von [2;+;3;*;4;=] liefert Ausgaben [2;2;3;5;4;20]``() = 
+        let eingaben = [Ziffer '2'; Operator '+'; Ziffer '3'; Operator '*'; Ziffer '4'; Operator '=']
+        let erwartet = [2.0; 2.0; 3.0; 5.0; 4.0; 20.0]
         let ergebnise = benutzeRechner eingaben
         CollectionAssert.AreEqual(erwartet, ergebnise)
