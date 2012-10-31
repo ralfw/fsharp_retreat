@@ -82,9 +82,10 @@ Zur bisherigen Interaktion der Operatoreingabe kommt die der Zifferneingabe hinz
 
 Dadurch verändert sich aber auch der bisherige Flow, denn nun kommt der aktuelle Operand nicht mehr aus dem UI. Es ist ja nicht mehr für seine Bestimmung zuständig.
 
-![](http://yuml.me/766d4dfd)
+![](http://yuml.me/f8fd74e3)
 
-	[GUI Rechenschritt ausfuehren]->(Zahl entnehmen)->(Berechnen)->[GUI Ergebnis anzeigen]
+	[GUI Rechenschritt ausfuehren]->(Zahl entnehmen)->(Berechnen)->[GUI Ergebnis anzeigen],
+	(Berechnen)->(Zahl eintragen)
 
 Die Operationen _Zahl aktualisieren_ und _Zahl entnehmen_ teilen sich natürlich Zustand. Eine weitere Verfeinerung scheint jedoch nicht nötig.
 
@@ -92,10 +93,11 @@ Nach der Entnahme ist die aktuelle Zahl auf 0 zurückgesetzt.
 
 __Zusammenfassung:__
 
-![](http://yuml.me/e3d35bf9)
+![](http://yuml.me/ecd5bb4c)
 
 	[GUI Zifferneingabe]-Ziffer>(Zahlenwerk)-Zahl>[GUI Ergebnis anzeigen],
-	[GUI Rechenschritt ausfuehren]-Op>(Zahlenwerk)-Rechenschritt>(Berechnen)-Zahl>[GUI Ergebnis anzeigen]
+	[GUI Rechenschritt ausfuehren]-Op>(Zahlenwerk)-Rechenschritt>(Berechnen)-Zahl>[GUI Ergebnis anzeigen],
+	(Berechnen)-Zahl>(Zahlenwerk)
 
 ## Interface
 
