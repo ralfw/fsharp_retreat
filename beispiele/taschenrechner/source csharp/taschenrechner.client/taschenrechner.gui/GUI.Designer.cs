@@ -44,6 +44,8 @@
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -206,11 +208,33 @@
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.btnDigit_Click);
             // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(24, 144);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(32, 23);
+            this.button16.TabIndex = 16;
+            this.button16.Text = ",";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.btnDigit_Click);
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(100, 144);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(32, 23);
+            this.button17.TabIndex = 17;
+            this.button17.Text = "+/-";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.btnDigit_Click);
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(249, 179);
+            this.Controls.Add(this.button17);
+            this.Controls.Add(this.button16);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
@@ -254,6 +278,8 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button17;
     }
 }
 

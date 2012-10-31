@@ -11,11 +11,11 @@ let imperativerRechner (gui : IGUI) =
 
     let aufZahlReagieren (z : string) = 
         zustand := Rechner.verarbeiteEingabe !zustand (Ziffer z.[0])
-        gui.Ergebnis_anzeigen ((!zustand).Akku)
+        gui.Ergebnis_anzeigen ((!zustand).Akku.Wert)
 
     let aufOperatorReagieren (op : string) = 
         zustand := Rechner.verarbeiteEingabe !zustand (Operator op.[0])
-        gui.Ergebnis_anzeigen ((!zustand).Akku)
+        gui.Ergebnis_anzeigen ((!zustand).Akku.Wert)
 
     gui.add_Zifferneingabe          (new Action<_>(aufZahlReagieren))
     gui.add_Rechenschritt_ausführen (new Action<_>(aufOperatorReagieren))

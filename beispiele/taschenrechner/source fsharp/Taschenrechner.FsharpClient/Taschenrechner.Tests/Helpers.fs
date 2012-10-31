@@ -11,5 +11,5 @@ module Helpers =
         eingaben 
         |> List.scan Rechner.verarbeiteEingabe 
                         Rechner.initial
-        |> List.map (fun s -> s.Akku)
+        |> List.map (fun s -> s.Akku.Wert)
         |> List.tail  // <- erstes ZE von scan ist irrelevant

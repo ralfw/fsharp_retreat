@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EingabeBuffer.fs" />
+    <Compile Include="Akkumulator.fs" />
     <Compile Include="Taschenrechner.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />

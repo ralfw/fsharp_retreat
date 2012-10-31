@@ -15,12 +15,8 @@ open System
 // das sollte IMHO 10 ergeben - meine Version macht das entsprechend
 // kann aber leicht geändert werden - wenn die Operation "=" den Akku mit löscht
 
-type OperationCont          = double -> double
-type Zwischenergebnis       = double
-
 type Status = { Eingabe     : EingabeBuffer;
-                Akku        : Zwischenergebnis;
-                LtOperation : OperationCont }
+                Akku        : Akku }
 
 type Eingabe = 
     | Ziffer   of char
@@ -28,33 +24,18 @@ type Eingabe =
 
 module Rechner =
 
-    /// Hilffunktion: übersetze die Operation von einem Character in unsere
-    /// Continuation
-    let private toOperationCont (ze : double) (c : char) : OperationCont =
-        match c with
-        | '+' -> (fun z -> ze + z)
-        | '-' -> (fun z -> ze - z)
-        | '*' -> (fun z -> ze * z)
-        | '/' -> (fun z -> ze / z)
-        | '=' -> id
-        | _   -> failwith (sprintf "kann Operator '%c' nicht verarbeiten" c)
-
     /// der initiale Zustand des Rechner 
     let initial : Status =
         { Eingabe     = leereEingabe
-        ; Akku        = 0.0
-        ; LtOperation = id }
-
-    let private verarbeiteOperator (s : Status) (o : char) : Status =
-        let ze' = s.LtOperation s.Akku
-        let oc' = toOperationCont ze' o
-        { Eingabe     = leereEingabe
-        ; Akku        = ze'
-        ; LtOperation = oc' }
+        ; Akku        = Akkumulator.initial }
 
     let private verarbeiteZiffer (s : Status) (z : char) : Status =
         let buf' = zeichenEingeben s.Eingabe z
-        { s with Eingabe = buf'; Akku = aktuellerWert buf'; }
+        { s with Eingabe = buf'; Akku = Akkumulator.setzeAkku s.Akku <| aktuellerWert buf'; }
+
+    let private verarbeiteOperator (s : Status) (o : char) : Status =
+        let akku' = Akkumulator.verarbeiteOperator s.Akku o
+        { s with Akku = akku'; Eingabe = leereEingabe }
 
     /// Verarbeitungsschritt bzw. Übergangfunktion
     let verarbeiteEingabe (s : Status) (e : Eingabe) : Status =
