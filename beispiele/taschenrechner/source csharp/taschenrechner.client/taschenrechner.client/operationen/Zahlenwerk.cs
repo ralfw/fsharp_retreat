@@ -34,6 +34,7 @@ namespace taschenrechner.client.operationen
         {
             _zahl = zahl;
             _zurücksetzen_bei_nächster_Ziffer = true;
+            Aktualisierte_Zahl(_zahl);
         }
 
 

@@ -14,9 +14,8 @@ namespace taschenrechner.client.flows
             gui.Zifferneingabe += zw.Zifferneingabe;
             gui.Rechenschritt_ausführen += zw.Zahl_entnehmen;
             zw.Zahl_entnommen += berechnen.Process;
-            zw.Aktualisierte_Zahl += gui.Ergebnis_anzeigen;
             berechnen.Result += zw.Zahl_setzen;
-            berechnen.Result += gui.Ergebnis_anzeigen;
+            zw.Aktualisierte_Zahl += gui.Ergebnis_anzeigen;
         }
     }
 }
