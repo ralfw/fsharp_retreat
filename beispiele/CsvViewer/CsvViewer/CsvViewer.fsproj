@@ -46,12 +46,11 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatenDefs.fs" />
+    <Compile Include="Eingabe.fs" />
     <Compile Include="Seite.fs" />
+    <Compile Include="Anzeige.fs" />
     <Compile Include="CsvFormat.fs" />
     <Compile Include="Datei.fs" />
-    <Compile Include="Anzeige.fs" />
-    <Compile Include="Eingabe.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
   </ItemGroup>

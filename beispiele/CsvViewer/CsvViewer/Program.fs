@@ -1,10 +1,8 @@
 ﻿module CsvViewer.Main
 
-open DatenDefs
-
 let defaultZeilenProSeite = 3
 
-let rec hauptschleife (aktuelleSeite : Seite) =
+let rec hauptschleife (aktuelleSeite : Seite.Seite) =
     Anzeige.seiteAnzeigen aktuelleSeite
     let aktion = Eingabe.aktionAbwarten()
     let seite = aktion |> Option.bind (Seite.benutzerAktion aktuelleSeite)
@@ -12,7 +10,7 @@ let rec hauptschleife (aktuelleSeite : Seite) =
     | None   -> 0 // Programm beenden
     | Some s -> hauptschleife s
     
-let argvAuswerten (argv : string[]) : (Datei.Pfad * ZeilenProSeite) option =
+let argvAuswerten (argv : string[]) : (Datei.Pfad * Seite.ZeilenProSeite) option =
     match argv.Length with
     | 1 -> Some (argv.[0], defaultZeilenProSeite)
     | 2 -> Some (argv.[0], int argv.[1]) 

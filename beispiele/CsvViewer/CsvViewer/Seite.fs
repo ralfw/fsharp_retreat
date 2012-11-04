@@ -1,7 +1,17 @@
 ﻿module CsvViewer.Seite
 
-open DatenDefs
+type Kopf     = string list
+type Zeile    = string list
+type Inhalt   = Zeile seq
 
+type ZeilenProSeite = int
+
+/// Daten der aktuellen Seite
+/// beinhaltet außerdem alles um weitere Seiten zu erzeugen
+type Seite    = { kopf     : Kopf
+                ; proSeite : ZeilenProSeite
+                ; seitenNr : int
+                ; gesamt   : Inhalt }
 /// erzeugt eine Seitendarstellung, die die erste Seite anzeigt
 let initialeSeiteErzeugen (zeilenProSeite : ZeilenProSeite) ((kopf, zeilen) : Kopf*Inhalt) : Seite =
     { kopf = kopf
@@ -39,11 +49,11 @@ let private letzteSeite (seite : Seite) =
 /// Aktion durchführen
 /// liefert Some Seite, falls eine Seite angzeigt werden soll
 /// und None, falls das Programm verlassen werden soll
-let benutzerAktion (seite : Seite) (aktion : Aktion) : Seite option =
+let benutzerAktion (seite : Seite) (aktion : Eingabe.Aktion) : Seite option =
     match aktion with
-    | ProgrammVerlassen -> None
-    | VorherigeSeite    -> Some <| seiteZurück seite
-    | NächsteSeite      -> Some <| seiteVor seite
-    | ErsteSeite        -> Some <| ersteSeite seite
-    | LetzteSeite       -> Some <| letzteSeite seite
+    | Eingabe.ProgrammVerlassen -> None
+    | Eingabe.VorherigeSeite    -> Some <| seiteZurück seite
+    | Eingabe.NächsteSeite      -> Some <| seiteVor seite
+    | Eingabe.ErsteSeite        -> Some <| ersteSeite seite
+    | Eingabe.LetzteSeite       -> Some <| letzteSeite seite
 

@@ -1,7 +1,13 @@
 ﻿module CsvViewer.Eingabe
 
-open DatenDefs
 open System
+
+/// die möglichen Benutzeraktionen
+type Aktion = NächsteSeite 
+            | VorherigeSeite 
+            | ErsteSeite 
+            | LetzteSeite 
+            | ProgrammVerlassen
 
 let aktionAbwarten () : Aktion option =
     match Console.ReadKey(true).Key with

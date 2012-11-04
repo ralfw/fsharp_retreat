@@ -1,6 +1,5 @@
 ﻿module CsvViewer.Datei
 
-open DatenDefs
 open System.IO
 
 type Pfad = string
@@ -12,7 +11,7 @@ let private dateiAuslesen (pfad : Pfad) : string =
     use reader = File.OpenText(pfad) // bitte beachten: OpenText öfnet die Datei bereits in UTF-8!
     reader.ReadToEnd()
 
-let einlesen (pfad : Pfad) : (Kopf * Zeile seq) =
+let einlesen (pfad : Pfad) : (Seite.Kopf * Seite.Zeile seq) =
     let inhalt = dateiAuslesen pfad
     let zeilen = inhalt |> CsvFormat.trenneZeilen zeilenEndeBei
                         |> Seq.map (CsvFormat.trenneZeile trennZeichen)
